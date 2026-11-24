@@ -1,0 +1,530 @@
+[
+  {
+    "part": 1,
+    "title": "Language models and n-grams",
+    "slides": [
+      {
+        "number": 1,
+        "title": "Language models and n-grams",
+        "scene": null,
+        "section": "Start",
+        "source": "Based on Shamsuddeen Muhammad · From Counting Words to Pretrained Transformers · 24 Nov 2026"
+      },
+      {
+        "number": 2,
+        "title": "A next-token prediction",
+        "scene": null,
+        "section": "Probability",
+        "source": "Lecture slide 4"
+      },
+      {
+        "number": 3,
+        "title": "The chain rule",
+        "scene": "chain-rule",
+        "section": "Probability",
+        "source": "Lecture slide 4"
+      },
+      {
+        "number": 4,
+        "title": "Prediction, likelihood and generation",
+        "scene": null,
+        "section": "Probability",
+        "source": "Lecture slide 4"
+      },
+      {
+        "number": 5,
+        "title": "A short context approximation",
+        "scene": null,
+        "section": "N-grams",
+        "source": "Lecture slide 8"
+      },
+      {
+        "number": 6,
+        "title": "The context window",
+        "scene": "ngram-window",
+        "section": "N-grams",
+        "source": "Lecture slide 11"
+      },
+      {
+        "number": 7,
+        "title": "A model built from actual counts",
+        "scene": "counts",
+        "section": "N-grams",
+        "source": "Lecture slides 8–9 · Computed three-sentence corpus"
+      },
+      {
+        "number": 8,
+        "title": "Scoring a complete sentence",
+        "scene": null,
+        "section": "N-grams",
+        "source": "Lecture slide 9"
+      },
+      {
+        "number": 9,
+        "title": "An unseen phrase gets zero",
+        "scene": null,
+        "section": "Smoothing",
+        "source": "<a href=\"https://aclanthology.org/P96-1041/\" target=\"_blank\" rel=\"noopener\">Chen & Goodman · smoothing</a> · Lecture slides 10"
+      },
+      {
+        "number": 10,
+        "title": "Smoothing redistributes probability",
+        "scene": "smoothing",
+        "section": "Smoothing",
+        "source": "<a href=\"https://aclanthology.org/P96-1041/\" target=\"_blank\" rel=\"noopener\">Chen & Goodman · smoothing</a> · Lecture slides 10"
+      },
+      {
+        "number": 11,
+        "title": "Backoff, interpolation and continuation",
+        "scene": null,
+        "section": "Smoothing",
+        "source": "<a href=\"https://aclanthology.org/P96-1041/\" target=\"_blank\" rel=\"noopener\">Chen & Goodman · smoothing</a> · Lecture slides 7, 10"
+      },
+      {
+        "number": 12,
+        "title": "Perplexity measures average surprise",
+        "scene": null,
+        "section": "Evaluation",
+        "source": "Lecture slide 4 · Worked held-out example"
+      },
+      {
+        "number": 13,
+        "title": "The cost of a bigger context",
+        "scene": null,
+        "section": "Limits",
+        "source": "Lecture slide 11"
+      },
+      {
+        "number": 14,
+        "title": "Check your understanding",
+        "scene": null,
+        "section": "Review",
+        "source": ""
+      },
+      {
+        "number": 15,
+        "title": "What carries forward",
+        "scene": null,
+        "section": "Review",
+        "source": ""
+      }
+    ]
+  },
+  {
+    "part": 2,
+    "title": "Neural LMs, RNNs, LSTM and GRU",
+    "slides": [
+      {
+        "number": 1,
+        "title": "Neural language models and memory",
+        "scene": null,
+        "section": "Start",
+        "source": "Based on Shamsuddeen Muhammad · From Counting Words to Pretrained Transformers · 24 Nov 2026"
+      },
+      {
+        "number": 2,
+        "title": "Learning a representation",
+        "scene": null,
+        "section": "Embeddings",
+        "source": "<a href=\"https://www.jmlr.org/papers/v3/bengio03a.html\" target=\"_blank\" rel=\"noopener\">Bengio et al. · neural probabilistic LM (2003)</a> · Lecture slides 12–14"
+      },
+      {
+        "number": 3,
+        "title": "A fixed-window neural language model",
+        "scene": "neural-lm",
+        "section": "Embeddings",
+        "source": "<a href=\"https://www.jmlr.org/papers/v3/bengio03a.html\" target=\"_blank\" rel=\"noopener\">Bengio et al. · neural probabilistic LM (2003)</a> · Lecture slides 13–14"
+      },
+      {
+        "number": 4,
+        "title": "Shapes through the neural predictor",
+        "scene": null,
+        "section": "Embeddings",
+        "source": "<a href=\"https://www.jmlr.org/papers/v3/bengio03a.html\" target=\"_blank\" rel=\"noopener\">Bengio et al. · neural probabilistic LM (2003)</a> · Lecture slides 13–15"
+      },
+      {
+        "number": 5,
+        "title": "A state carries context forward",
+        "scene": null,
+        "section": "Recurrence",
+        "source": "<a href=\"https://doi.org/10.1207/s15516709cog1402_1\" target=\"_blank\" rel=\"noopener\">Elman · Finding Structure in Time (1990)</a> · Lecture slides 16–17"
+      },
+      {
+        "number": 6,
+        "title": "Inside one RNN cell",
+        "scene": "rnn-cell",
+        "section": "Recurrence",
+        "source": "<a href=\"https://doi.org/10.1207/s15516709cog1402_1\" target=\"_blank\" rel=\"noopener\">Elman · Finding Structure in Time (1990)</a> · Lecture slides 16–17"
+      },
+      {
+        "number": 7,
+        "title": "Unrolling the same cell",
+        "scene": "rnn-unroll",
+        "section": "Recurrence",
+        "source": "<a href=\"https://doi.org/10.1207/s15516709cog1402_1\" target=\"_blank\" rel=\"noopener\">Elman · Finding Structure in Time (1990)</a> · Lecture slides 17"
+      },
+      {
+        "number": 8,
+        "title": "A complete numeric RNN pass",
+        "scene": "rnn-numeric",
+        "section": "Recurrence",
+        "source": "Computed scalar RNN · Wₓ = 0.6, Wₕ = 0.8, b = 0"
+      },
+      {
+        "number": 9,
+        "title": "Backpropagation through time",
+        "scene": null,
+        "section": "Learning",
+        "source": "Lecture slides 18–19"
+      },
+      {
+        "number": 10,
+        "title": "Why a gradient can shrink or explode",
+        "scene": "gradient",
+        "section": "Learning",
+        "source": "Lecture slides 18–19 · Computed teaching factors"
+      },
+      {
+        "number": 11,
+        "title": "A gated memory path",
+        "scene": null,
+        "section": "Gates",
+        "source": "<a href=\"https://doi.org/10.1162/neco.1997.9.8.1735\" target=\"_blank\" rel=\"noopener\">Hochreiter & Schmidhuber · LSTM (1997)</a> · Lecture slides 20–21"
+      },
+      {
+        "number": 12,
+        "title": "LSTM: the complete state update",
+        "scene": "lstm",
+        "section": "Gates",
+        "source": "<a href=\"https://doi.org/10.1162/neco.1997.9.8.1735\" target=\"_blank\" rel=\"noopener\">Hochreiter & Schmidhuber · LSTM (1997)</a> · Lecture slides 20–21"
+      },
+      {
+        "number": 13,
+        "title": "LSTM equations and tensor shapes",
+        "scene": null,
+        "section": "Gates",
+        "source": "<a href=\"https://doi.org/10.1162/neco.1997.9.8.1735\" target=\"_blank\" rel=\"noopener\">Hochreiter & Schmidhuber · LSTM (1997)</a> · Lecture slides 21"
+      },
+      {
+        "number": 14,
+        "title": "The carry path and its limits",
+        "scene": null,
+        "section": "Gates",
+        "source": "<a href=\"https://doi.org/10.1162/neco.1997.9.8.1735\" target=\"_blank\" rel=\"noopener\">Hochreiter & Schmidhuber · LSTM (1997)</a> · Lecture slides 20–21"
+      },
+      {
+        "number": 15,
+        "title": "GRU: reset, candidate and update",
+        "scene": "gru",
+        "section": "Gates",
+        "source": "<a href=\"https://aclanthology.org/D14-1179/\" target=\"_blank\" rel=\"noopener\">Cho et al. · RNN encoder–decoder (2014)</a> · Lecture slides 20–22"
+      },
+      {
+        "number": 16,
+        "title": "GRU equations: a stated convention",
+        "scene": null,
+        "section": "Gates",
+        "source": "<a href=\"https://aclanthology.org/D14-1179/\" target=\"_blank\" rel=\"noopener\">Cho et al. · RNN encoder–decoder (2014)</a> · Lecture slides 21"
+      },
+      {
+        "number": 17,
+        "title": "LSTM and GRU",
+        "scene": null,
+        "section": "Comparison",
+        "source": "<a href=\"https://aclanthology.org/D14-1179/\" target=\"_blank\" rel=\"noopener\">Cho et al. · RNN encoder–decoder (2014)</a> · Lecture slides 22"
+      },
+      {
+        "number": 18,
+        "title": "A reset-gate question",
+        "scene": null,
+        "section": "Review",
+        "source": ""
+      },
+      {
+        "number": 19,
+        "title": "The same recurrence can serve different tasks",
+        "scene": null,
+        "section": "Applications",
+        "source": "Lecture slide 23"
+      },
+      {
+        "number": 20,
+        "title": "A state is not the whole architecture",
+        "scene": null,
+        "section": "Review",
+        "source": ""
+      }
+    ]
+  },
+  {
+    "part": 3,
+    "title": "Encoder–decoder models and attention",
+    "slides": [
+      {
+        "number": 1,
+        "title": "Encoder–decoder models and attention",
+        "scene": null,
+        "section": "Start",
+        "source": "Based on Shamsuddeen Muhammad · From Counting Words to Pretrained Transformers · 24 Nov 2026"
+      },
+      {
+        "number": 2,
+        "title": "Output length and order can change",
+        "scene": null,
+        "section": "Seq2seq",
+        "source": "<a href=\"https://arxiv.org/abs/1409.3215\" target=\"_blank\" rel=\"noopener\">Sutskever et al. · Sequence to Sequence Learning (2014)</a> · Lecture slides 24–25"
+      },
+      {
+        "number": 3,
+        "title": "The encoder and decoder at work",
+        "scene": "seq2seq",
+        "section": "Seq2seq",
+        "source": "<a href=\"https://arxiv.org/abs/1409.3215\" target=\"_blank\" rel=\"noopener\">Sutskever et al. · Sequence to Sequence Learning (2014)</a> · Lecture slides 26–27"
+      },
+      {
+        "number": 4,
+        "title": "Teacher forcing during training",
+        "scene": null,
+        "section": "Seq2seq",
+        "source": "Lecture slides 26–27 · Training clarification"
+      },
+      {
+        "number": 5,
+        "title": "Generation uses its own prefix",
+        "scene": null,
+        "section": "Seq2seq",
+        "source": "<a href=\"https://arxiv.org/abs/1409.3215\" target=\"_blank\" rel=\"noopener\">Sutskever et al. · Sequence to Sequence Learning (2014)</a> · Lecture slides 26–27"
+      },
+      {
+        "number": 6,
+        "title": "One vector for a growing source",
+        "scene": "bottleneck",
+        "section": "Bottleneck",
+        "source": "<a href=\"https://arxiv.org/abs/1409.0473\" target=\"_blank\" rel=\"noopener\">Bahdanau et al. · joint alignment and translation (2015)</a> · Lecture slides 28–31"
+      },
+      {
+        "number": 7,
+        "title": "Long inputs expose the difficulty",
+        "scene": null,
+        "section": "Bottleneck",
+        "source": "<a href=\"https://arxiv.org/abs/1409.0473\" target=\"_blank\" rel=\"noopener\">Bahdanau et al. · joint alignment and translation (2015)</a> · Lecture slides 30–31"
+      },
+      {
+        "number": 8,
+        "title": "A separate context for each target step",
+        "scene": null,
+        "section": "Attention",
+        "source": "<a href=\"https://arxiv.org/abs/1409.0473\" target=\"_blank\" rel=\"noopener\">Bahdanau et al. · joint alignment and translation (2015)</a> · Lecture slides 32–33"
+      },
+      {
+        "number": 9,
+        "title": "Scores, softmax and a weighted sum",
+        "scene": "cross-attention",
+        "section": "Attention",
+        "source": "<a href=\"https://arxiv.org/abs/1409.0473\" target=\"_blank\" rel=\"noopener\">Bahdanau et al. · joint alignment and translation (2015)</a> · Lecture slides 34"
+      },
+      {
+        "number": 10,
+        "title": "Additive and dot-product scoring",
+        "scene": null,
+        "section": "Attention",
+        "source": "<a href=\"https://arxiv.org/abs/1409.0473\" target=\"_blank\" rel=\"noopener\">Bahdanau et al. · joint alignment and translation (2015)</a> · Lecture slides 32–34"
+      },
+      {
+        "number": 11,
+        "title": "Soft alignment can reorder a translation",
+        "scene": "alignment",
+        "section": "Attention",
+        "source": "<a href=\"https://arxiv.org/abs/1409.0473\" target=\"_blank\" rel=\"noopener\">Bahdanau et al. · joint alignment and translation (2015)</a> · Lecture slides 33–34"
+      },
+      {
+        "number": 12,
+        "title": "A weighted-sum question",
+        "scene": null,
+        "section": "Attention",
+        "source": ""
+      },
+      {
+        "number": 13,
+        "title": "Attention around an RNN still has recurrence",
+        "scene": "parallel",
+        "section": "Scaling",
+        "source": "Lecture slide 35"
+      },
+      {
+        "number": 14,
+        "title": "What changed—and what did not",
+        "scene": null,
+        "section": "Scaling",
+        "source": "<a href=\"https://arxiv.org/abs/1409.0473\" target=\"_blank\" rel=\"noopener\">Bahdanau et al. · joint alignment and translation (2015)</a> · Lecture slides 35"
+      },
+      {
+        "number": 15,
+        "title": "The source stays accessible",
+        "scene": null,
+        "section": "Review",
+        "source": ""
+      }
+    ]
+  },
+  {
+    "part": 4,
+    "title": "The Transformer",
+    "slides": [
+      {
+        "number": 1,
+        "title": "The Transformer",
+        "scene": null,
+        "section": "Start",
+        "source": "Based on Shamsuddeen Muhammad · From Counting Words to Pretrained Transformers · 24 Nov 2026"
+      },
+      {
+        "number": 2,
+        "title": "What self-attention replaces",
+        "scene": null,
+        "section": "Overview",
+        "source": "<a href=\"https://arxiv.org/abs/1706.03762\" target=\"_blank\" rel=\"noopener\">Vaswani et al. · Attention Is All You Need (2017)</a> · Lecture slides 36–40"
+      },
+      {
+        "number": 3,
+        "title": "The complete encoder–decoder map",
+        "scene": "transformer-map",
+        "section": "Overview",
+        "source": "<a href=\"https://arxiv.org/abs/1706.03762\" target=\"_blank\" rel=\"noopener\">Vaswani et al. · Attention Is All You Need (2017)</a> · Lecture slides 37"
+      },
+      {
+        "number": 4,
+        "title": "Token vectors need position information",
+        "scene": null,
+        "section": "Input",
+        "source": "<a href=\"https://arxiv.org/abs/1706.03762\" target=\"_blank\" rel=\"noopener\">Vaswani et al. · Attention Is All You Need (2017)</a> · Lecture slides 36–38"
+      },
+      {
+        "number": 5,
+        "title": "Three projections of the token representation",
+        "scene": "qkv",
+        "section": "Q · K · V",
+        "source": "<a href=\"https://arxiv.org/abs/1706.03762\" target=\"_blank\" rel=\"noopener\">Vaswani et al. · Attention Is All You Need (2017)</a> · Lecture slides 38"
+      },
+      {
+        "number": 6,
+        "title": "What Q, K and V do",
+        "scene": null,
+        "section": "Q · K · V",
+        "source": "<a href=\"https://arxiv.org/abs/1706.03762\" target=\"_blank\" rel=\"noopener\">Vaswani et al. · Attention Is All You Need (2017)</a> · Lecture slides 38"
+      },
+      {
+        "number": 7,
+        "title": "One attention row, calculated completely",
+        "scene": "attention-math",
+        "section": "Attention",
+        "source": "<a href=\"https://arxiv.org/abs/1706.03762\" target=\"_blank\" rel=\"noopener\">Vaswani et al. · Attention Is All You Need (2017)</a> · Lecture slides 38–39"
+      },
+      {
+        "number": 8,
+        "title": "The attention matrix has a precise meaning",
+        "scene": null,
+        "section": "Attention",
+        "source": "<a href=\"https://arxiv.org/abs/1706.03762\" target=\"_blank\" rel=\"noopener\">Vaswani et al. · Attention Is All You Need (2017)</a> · Lecture slides 38"
+      },
+      {
+        "number": 9,
+        "title": "Causal visibility and target shifting",
+        "scene": "mask",
+        "section": "Attention",
+        "source": "<a href=\"https://arxiv.org/abs/1706.03762\" target=\"_blank\" rel=\"noopener\">Vaswani et al. · Attention Is All You Need (2017)</a> · Lecture slides 41"
+      },
+      {
+        "number": 10,
+        "title": "Multi-head attention",
+        "scene": "heads",
+        "section": "Attention",
+        "source": "<a href=\"https://arxiv.org/abs/1706.03762\" target=\"_blank\" rel=\"noopener\">Vaswani et al. · Attention Is All You Need (2017)</a> · Lecture slides 37–38"
+      },
+      {
+        "number": 11,
+        "title": "An encoder block, opened up",
+        "scene": "encoder-block",
+        "section": "Blocks",
+        "source": "<a href=\"https://arxiv.org/abs/1706.03762\" target=\"_blank\" rel=\"noopener\">Vaswani et al. · Attention Is All You Need (2017)</a> · Lecture slides 37"
+      },
+      {
+        "number": 12,
+        "title": "The position-wise feed-forward network",
+        "scene": "ffn",
+        "section": "Blocks",
+        "source": "<a href=\"https://arxiv.org/abs/1706.03762\" target=\"_blank\" rel=\"noopener\">Vaswani et al. · Attention Is All You Need (2017)</a> · Lecture slides 37"
+      },
+      {
+        "number": 13,
+        "title": "Residuals and layer normalisation",
+        "scene": null,
+        "section": "Blocks",
+        "source": "<a href=\"https://arxiv.org/abs/1706.03762\" target=\"_blank\" rel=\"noopener\">Vaswani et al. · Attention Is All You Need (2017)</a> · Lecture slides 37"
+      },
+      {
+        "number": 14,
+        "title": "Where cross-attention gets its inputs",
+        "scene": "cross-qkv",
+        "section": "Decoder",
+        "source": "<a href=\"https://arxiv.org/abs/1706.03762\" target=\"_blank\" rel=\"noopener\">Vaswani et al. · Attention Is All You Need (2017)</a> · Lecture slides 37"
+      },
+      {
+        "number": 15,
+        "title": "Three sublayers in each decoder block",
+        "scene": null,
+        "section": "Decoder",
+        "source": "<a href=\"https://arxiv.org/abs/1706.03762\" target=\"_blank\" rel=\"noopener\">Vaswani et al. · Attention Is All You Need (2017)</a> · Lecture slides 37"
+      },
+      {
+        "number": 16,
+        "title": "The full model with the pieces connected",
+        "scene": "transformer-map",
+        "section": "Decoder",
+        "source": "<a href=\"https://arxiv.org/abs/1706.03762\" target=\"_blank\" rel=\"noopener\">Vaswani et al. · Attention Is All You Need (2017)</a> · Lecture slides 37"
+      },
+      {
+        "number": 17,
+        "title": "A causal model generates one token at a time",
+        "scene": "generation",
+        "section": "Training & generation",
+        "source": "<a href=\"https://arxiv.org/abs/1706.03762\" target=\"_blank\" rel=\"noopener\">Vaswani et al. · Attention Is All You Need (2017)</a> · Lecture slides 41"
+      },
+      {
+        "number": 18,
+        "title": "Parallel training versus sequential generation",
+        "scene": null,
+        "section": "Training & generation",
+        "source": "<a href=\"https://arxiv.org/abs/1706.03762\" target=\"_blank\" rel=\"noopener\">Vaswani et al. · Attention Is All You Need (2017)</a> · Lecture slides 35–41"
+      },
+      {
+        "number": 19,
+        "title": "Three Transformer families",
+        "scene": null,
+        "section": "Families",
+        "source": "<a href=\"https://aclanthology.org/N19-1423/\" target=\"_blank\" rel=\"noopener\">Devlin et al. · BERT (2019)</a> · Lecture slides 41"
+      },
+      {
+        "number": 20,
+        "title": "What remains expensive",
+        "scene": null,
+        "section": "Limits",
+        "source": "<a href=\"https://arxiv.org/abs/1706.03762\" target=\"_blank\" rel=\"noopener\">Vaswani et al. · Attention Is All You Need (2017)</a> · Lecture slides 40"
+      },
+      {
+        "number": 21,
+        "title": "Trace one complete prediction",
+        "scene": null,
+        "section": "Review",
+        "source": ""
+      },
+      {
+        "number": 22,
+        "title": "What you should now be able to explain",
+        "scene": null,
+        "section": "Review",
+        "source": ""
+      }
+    ]
+  }
+]
