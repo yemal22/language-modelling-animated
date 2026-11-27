@@ -33,6 +33,7 @@ for(const d of MORE_COURSE)for(const s of d.slides){
   for(const value of values){
    const v=renderScene(s.scene,{[c.key]:String(value)});
    assert.ok(!/NaN|undefined/.test(v.svg),s.scene);
+   assert.ok(!v.svg.includes(String.fromCharCode(92)+'n'),s.scene+' contains a literal line-break escape');
    assert.equal(v.caps.length,r.caps.length,s.scene+' must preserve build count after control changes');
   }
  }

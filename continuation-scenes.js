@@ -189,7 +189,7 @@ export const MORE_SCENES={
  },
  'adapter-architecture':state=>{
   const q=adapterToy();
-  let s=box(20,200,230,95,'x = [1, 0.5]',0,'data')+box(350,350,220,100,'Down: d → r\\nWdown x = '+fmt(q.u,2),1,'train')+path('M250,247 H285 V400 H350',1)+box(650,350,220,100,'ReLU\\n'+fmt(q.activation,2),2)+line(570,400,650,400,2)+box(950,350,220,100,'Up: r → d\\nΔ = [0.20, −0.10]',3,'train')+line(870,400,950,400,3)+op(1240,247,'+',4)+line(250,247,1215,247,4,'thick')+path('M1170,400 H1240 V272',4)+box(1110,50,260,95,'y = [1.20, 0.40]',4,'dark')+line(1240,222,1240,145,4)+A(4,text(740,210,'Unchanged residual input','small'))+A(4,text(690,510,'Chosen 2 → 1 → 2 adapter · exact arithmetic','small'));
+  let s=box(20,200,230,95,'x = [1, 0.5]',0,'data')+box(350,350,220,100,'Down: d → r\nWdown x = '+fmt(q.u,2),1,'train')+path('M250,247 H285 V400 H350',1)+box(650,350,220,100,'ReLU\n'+fmt(q.activation,2),2)+line(570,400,650,400,2)+box(950,350,220,100,'Up: r → d\nΔ = [0.20, −0.10]',3,'train')+line(870,400,950,400,3)+op(1240,247,'+',4)+line(250,247,1215,247,4,'thick')+path('M1170,400 H1240 V272',4)+box(1110,50,260,95,'y = [1.20, 0.40]',4,'dark')+line(1240,222,1240,145,4)+A(4,text(740,210,'Unchanged residual input','small'))+A(4,text(690,510,'Chosen 2 → 1 → 2 adapter · exact arithmetic','small'));
   return{svg:wrap(s),caps:['The frozen body supplies a hidden vector x.','A trainable down projection maps width d into a small bottleneck r.','Apply a nonlinearity inside the added module.','A trainable up projection returns to width d.','Add the module’s output to x. This nonlinear adapter differs from LoRA’s linear weight-update branch.']};
  },
  'lora-architecture':state=>{
