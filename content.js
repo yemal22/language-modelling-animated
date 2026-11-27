@@ -1,3 +1,4 @@
+import {MORE_COURSE,morePapers} from './continuation-content.js';
 const R=String.raw;
 const eq=s=>`<div class="math">\\(${s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;')}\\)</div>`;
 const b=(s,k=1,cls='lead')=>`<div class="b ${cls}" data-at="${k}">${s}</div>`;
@@ -10,6 +11,7 @@ const scene=(sec,title,name,notes='',source='')=>({sec,title,kind:'scene',scene:
 const cover=(part,title,subtitle)=>({sec:'Start',title,kind:'cover',subtitle,notes:`This is Part ${part}, a study companion to Shamsuddeen Muhammad’s lecture. Take the time to work through each mechanism. Numeric visualisations are computed teaching examples, not pretrained-model outputs.`,source:'Based on Shamsuddeen Muhammad · From Counting Words to Pretrained Transformers · 24 Nov 2026'});
 const quiz=(sec,title,prompt,answer,notes='')=>text(sec,title,`<div class="statement">${prompt}</div>${b(answer,1,'answer')}`,notes||answer);
 const end=(part,title,items,next)=>text('Review',title,list(items)+(next?b(`<a href="../part-${next}/">Continue to Part ${next}</a>`,items.length+1,'sub'):''),'Pause before the next deck. Explain the mechanism in your own words rather than memorising a diagram.');
+Object.assign(paper,morePapers);
 export const COURSE=[
 {id:1,title:'Language models and n-grams',short:'Probabilities & counts',subtitle:'What does it mean to predict the next token?',slides:[
 cover(1,'Language models and n-grams','Probabilities, counting, smoothing—and what the counts cannot tell us'),
@@ -89,7 +91,9 @@ text('Training & generation','Parallel training versus sequential generation',`<
 text('Families','Three Transformer families',`<table class="table"><thead><tr><th>Family</th><th>Visibility / objective</th><th>Examples</th></tr></thead><tbody><tr><td>Encoder-only</td><td>Bidirectional context; masked-token training</td><td>BERT, RoBERTa</td></tr><tr><td>Decoder-only</td><td>Causal context; next-token training</td><td>GPT, Llama</td></tr><tr><td>Encoder–decoder</td><td>Source context + target prefix</td><td>T5, BART</td></tr></tbody></table>${b('These are architectural/training patterns, not exclusive lists of possible tasks.',1,'sub')}`,'BERT is trained with masked language modelling and, in its original form, next-sentence prediction. Encoder–decoder models can use denoising or supervised sequence tasks. Avoid implying all pretraining is identical.',src('bert','41')),
 text('Limits','What remains expensive',list(['A dense attention head has T × T query–key interactions.','Going from 1,000 to 10,000 tokens gives 100× as many score entries.','Compute, memory, data and context limits still depend on the architecture and implementation.']),'Standard dense attention has quadratic sequence interactions. FlashAttention reduces memory traffic/materialisation and can avoid storing the full score matrix; it does not make dense attention arithmetic linear in T. The lecture’s context examples are historical, not universal modern limits.',src('transformer','40')),
 quiz('Review','Trace one complete prediction','At a decoder cross-attention layer, where do Q, K and V come from?','Q comes from the decoder. K and V come from the encoder memory. The final vocabulary head then predicts a target token.'),
-end(4,'What you should now be able to explain',['Follow a token through embeddings, attention, residuals, FFN and the output head.','Distinguish self-attention, causal attention and cross-attention.','Explain why parallel training does not make autoregressive generation fully parallel.'],null)
+end(4,'What you should now be able to explain',['Follow a token through embeddings, attention, residuals, FFN and the output head.','Distinguish self-attention, causal attention and cross-attention.','Explain why parallel training does not make autoregressive generation fully parallel.'],5)
 ]}
 ];
 export {paper};
+
+COURSE.push(...MORE_COURSE);

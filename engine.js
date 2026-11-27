@@ -8,15 +8,15 @@ let cur=0,beat=0,blank=false,max=0,notesOn=false,active=null,sceneData=null,pend
 document.title=`Part ${part} · ${deck.title}`;
 function resize(){const scale=Math.min(innerWidth/1600,innerHeight/900);canvas.style.transform=`scale(${scale})`;}
 addEventListener('resize',resize);resize();
-function content(s){if(s.kind==='cover')return `<div class="center"><div class="kicker">Language modelling · Part ${part} of 4</div><h1>${s.title}</h1><div class="subtitle">${s.subtitle}</div><div class="credit">A study companion to Shamsuddeen Muhammad’s lecture<br>Prepared for Morel KPAVODE · 24 November 2026</div></div>`;
+function content(s){if(s.kind==='cover')return `<div class="center"><div class="kicker">Language modelling · Part ${part} of ${COURSE.length}</div><h1>${s.title}</h1><div class="subtitle">${s.subtitle}</div><div class="credit">A study companion to Shamsuddeen Muhammad’s lecture<br>Prepared for Morel KPAVODE · ${deck.lecture===2?'27 November 2026':'24 November 2026'}</div></div>`;
  if(s.kind==='scene'){sceneData=renderScene(s.scene,state[cur]);return `<h1>${s.title}</h1><div class="scene">${sceneData.svg}</div><div class="controls" aria-label="Teaching example controls"></div><div class="caption" aria-live="polite"></div>`;}
  return `<h1>${s.title}</h1><div class="body">${s.html.replaceAll('</s>','&lt;/s&gt;')}</div>`;}
 function makeControls(){const host=active.querySelector('.controls');if(!host)return;const controls=sceneData.controls||[];host.hidden=!controls.length;
  controls.forEach(c=>{const label=document.createElement('label');label.htmlFor='ctrl-'+c.key;label.textContent=c.label;host.append(label);let el=document.createElement(c.type==='select'?'select':'input');el.id='ctrl-'+c.key;el.dataset.control='true';
  if(c.type==='select'){for(const option of c.options){const [value,name]=Array.isArray(option)?option:[option,option];const o=document.createElement('option');o.value=value;o.textContent=name;el.append(o);}el.value=state[cur][c.key]??(Array.isArray(c.options[0])?c.options[0][0]:c.options[0]);}
  else{el.type='range';el.min=c.min;el.max=c.max;el.step=c.step;el.value=state[cur][c.key]??c.value;}
- const out=document.createElement('output');if(c.type!=='select'){out.textContent=Number(el.value).toFixed(2);el.setAttribute('aria-valuetext',out.textContent);}host.append(el);if(c.type!=='select')host.append(out);
- el.addEventListener('input',()=>{state[cur][c.key]=el.value;const data=renderScene(deck.slides[cur].scene,state[cur]);sceneData=data;active.querySelector('.scene').innerHTML=data.svg;out.textContent=Number(el.value).toFixed(2);el.setAttribute('aria-valuetext',el.value);apply(false);});
+ const digits=Number(c.step)>=1?0:2;const out=document.createElement('output');if(c.type!=='select'){out.textContent=Number(el.value).toFixed(digits);el.setAttribute('aria-valuetext',out.textContent);}host.append(el);if(c.type!=='select')host.append(out);
+ el.addEventListener('input',()=>{state[cur][c.key]=el.value;const data=renderScene(deck.slides[cur].scene,state[cur]);sceneData=data;active.querySelector('.scene').innerHTML=data.svg;out.textContent=Number(el.value).toFixed(digits);el.setAttribute('aria-valuetext',el.value);apply(false);});
  });
 }
 function typeset(){if(window.MathJax?.typesetPromise)pendingMath=window.MathJax.typesetPromise([active]).catch(()=>{});}

@@ -1,6 +1,7 @@
 [
   {
     "part": 1,
+    "lecture": 1,
     "title": "Language models and n-grams",
     "slides": [
       {
@@ -112,6 +113,7 @@
   },
   {
     "part": 2,
+    "lecture": 1,
     "title": "Neural LMs, RNNs, LSTM and GRU",
     "slides": [
       {
@@ -258,6 +260,7 @@
   },
   {
     "part": 3,
+    "lecture": 1,
     "title": "Encoder–decoder models and attention",
     "slides": [
       {
@@ -369,6 +372,7 @@
   },
   {
     "part": 4,
+    "lecture": 1,
     "title": "The Transformer",
     "slides": [
       {
@@ -524,6 +528,566 @@
         "scene": null,
         "section": "Review",
         "source": ""
+      }
+    ]
+  },
+  {
+    "part": 5,
+    "lecture": 2,
+    "title": "Contextual embeddings and tokenisation",
+    "slides": [
+      {
+        "number": 1,
+        "title": "Contextual embeddings and tokenisation",
+        "scene": null,
+        "section": "Start",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 1–41"
+      },
+      {
+        "number": 2,
+        "title": "One word, different uses",
+        "scene": null,
+        "section": "Context",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 4–6"
+      },
+      {
+        "number": 3,
+        "title": "The lookup and the contextual state",
+        "scene": "contextual-toy",
+        "section": "Context",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 4–6 · Computed attention example"
+      },
+      {
+        "number": 4,
+        "title": "Token vectors and sentence vectors",
+        "scene": null,
+        "section": "Context",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 5–6"
+      },
+      {
+        "number": 5,
+        "title": "Which context can the model use?",
+        "scene": null,
+        "section": "Context",
+        "source": "<a href=\"https://aclanthology.org/N18-1202/\" target=\"_blank\" rel=\"noopener\">Peters et al. · ELMo (2018)</a> · Lecture 2, slides 5–8"
+      },
+      {
+        "number": 6,
+        "title": "A character CNN builds the token input",
+        "scene": "character-cnn",
+        "section": "ELMo",
+        "source": "<a href=\"https://aclanthology.org/N18-1202/\" target=\"_blank\" rel=\"noopener\">Peters et al. · ELMo (2018)</a> · Lecture 2, slides 7–8"
+      },
+      {
+        "number": 7,
+        "title": "ELMo: characters, two directions, two layers",
+        "scene": "elmo-architecture",
+        "section": "ELMo",
+        "source": "<a href=\"https://aclanthology.org/N18-1202/\" target=\"_blank\" rel=\"noopener\">Peters et al. · ELMo (2018)</a> · Lecture 2, slides 7–8"
+      },
+      {
+        "number": 8,
+        "title": "A task learns the layer mixture",
+        "scene": null,
+        "section": "ELMo",
+        "source": "<a href=\"https://aclanthology.org/N18-1202/\" target=\"_blank\" rel=\"noopener\">Peters et al. · ELMo (2018)</a> · Lecture 2, slides 7–8"
+      },
+      {
+        "number": 9,
+        "title": "A computed ELMo layer mixture",
+        "scene": "elmo-mixture",
+        "section": "ELMo",
+        "source": "<a href=\"https://aclanthology.org/N18-1202/\" target=\"_blank\" rel=\"noopener\">Peters et al. · ELMo (2018)</a> · Lecture 2, slides 7–8 · Chosen vectors, exact weighted sum"
+      },
+      {
+        "number": 10,
+        "title": "The whole-word vocabulary problem",
+        "scene": null,
+        "section": "Vocabulary",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 8–9"
+      },
+      {
+        "number": 11,
+        "title": "Morphology and learned subwords",
+        "scene": null,
+        "section": "Vocabulary",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 10–11"
+      },
+      {
+        "number": 12,
+        "title": "BPE training and encoding",
+        "scene": null,
+        "section": "BPE",
+        "source": "<a href=\"https://aclanthology.org/P16-1162/\" target=\"_blank\" rel=\"noopener\">Sennrich et al. · subword units (2016)</a> · Lecture 2, slides 11 · Added worked example"
+      },
+      {
+        "number": 13,
+        "title": "BPE: count, choose, merge",
+        "scene": "bpe-training",
+        "section": "BPE",
+        "source": "<a href=\"https://aclanthology.org/P16-1162/\" target=\"_blank\" rel=\"noopener\">Sennrich et al. · subword units (2016)</a> · Lecture 2, slides 11 · Computed weighted corpus"
+      },
+      {
+        "number": 14,
+        "title": "Encoding a word unseen in training",
+        "scene": "bpe-encoding",
+        "section": "BPE",
+        "source": "<a href=\"https://aclanthology.org/P16-1162/\" target=\"_blank\" rel=\"noopener\">Sennrich et al. · subword units (2016)</a> · Lecture 2, slides 9–11 · Computed encoding of “lowest”"
+      },
+      {
+        "number": 15,
+        "title": "WordPiece, BPE and coverage",
+        "scene": null,
+        "section": "Vocabulary",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 9–11"
+      },
+      {
+        "number": 16,
+        "title": "Tokenisation affects the model’s budget",
+        "scene": null,
+        "section": "Vocabulary",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 9–11, 37–39"
+      },
+      {
+        "number": 17,
+        "title": "A contextual-embedding question",
+        "scene": null,
+        "section": "Review",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 4–41"
+      },
+      {
+        "number": 18,
+        "title": "Representations have three separate choices",
+        "scene": null,
+        "section": "Review",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 4–41"
+      }
+    ]
+  },
+  {
+    "part": 6,
+    "lecture": 2,
+    "title": "Pretraining and adaptive pretraining",
+    "slides": [
+      {
+        "number": 1,
+        "title": "Pretraining and adaptive pretraining",
+        "scene": null,
+        "section": "Start",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 1–41"
+      },
+      {
+        "number": 2,
+        "title": "The knowledge that transfers",
+        "scene": null,
+        "section": "Transfer",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 12–16, 22–24"
+      },
+      {
+        "number": 3,
+        "title": "Embeddings only or a pretrained body",
+        "scene": "transfer-body",
+        "section": "Transfer",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 12–15, 22–24"
+      },
+      {
+        "number": 4,
+        "title": "Self-supervision supplies training targets",
+        "scene": null,
+        "section": "Objectives",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 20–21"
+      },
+      {
+        "number": 5,
+        "title": "A masked-LM training example",
+        "scene": "masked-objective",
+        "section": "Objectives",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 20–21, 31 · Computed loss example"
+      },
+      {
+        "number": 6,
+        "title": "Pretraining and task fine-tuning",
+        "scene": null,
+        "section": "Transfer",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 19–24, 29"
+      },
+      {
+        "number": 7,
+        "title": "ULMFiT: three training stages",
+        "scene": "ulmfit-stages",
+        "section": "ULMFiT",
+        "source": "<a href=\"https://aclanthology.org/P18-1031/\" target=\"_blank\" rel=\"noopener\">Howard & Ruder · ULMFiT (2018)</a> · Lecture 2, slides 16–18"
+      },
+      {
+        "number": 8,
+        "title": "The classifier receives pooled hidden states",
+        "scene": "ulmfit-pooling",
+        "section": "ULMFiT",
+        "source": "<a href=\"https://aclanthology.org/P18-1031/\" target=\"_blank\" rel=\"noopener\">Howard & Ruder · ULMFiT (2018)</a> · Lecture 2, slides 18 · Computed pooling example"
+      },
+      {
+        "number": 9,
+        "title": "Careful updates preserve useful weights",
+        "scene": null,
+        "section": "ULMFiT",
+        "source": "<a href=\"https://aclanthology.org/P18-1031/\" target=\"_blank\" rel=\"noopener\">Howard & Ruder · ULMFiT (2018)</a> · Lecture 2, slides 16–18, 41"
+      },
+      {
+        "number": 10,
+        "title": "The mismatch between general text and a task",
+        "scene": null,
+        "section": "Adaptation",
+        "source": "<a href=\"https://aclanthology.org/2020.acl-main.740/\" target=\"_blank\" rel=\"noopener\">Gururangan et al. · Don’t Stop Pretraining (2020)</a> · Lecture 2, slides 25–30"
+      },
+      {
+        "number": 11,
+        "title": "DAPT, TAPT and LAPT change the corpus",
+        "scene": "adaptation-data",
+        "section": "Adaptation",
+        "source": "<a href=\"https://aclanthology.org/2020.acl-main.740/\" target=\"_blank\" rel=\"noopener\">Gururangan et al. · Don’t Stop Pretraining (2020)</a> · Lecture 2, slides 25–29 · LAPT: Alabi et al. (2022)"
+      },
+      {
+        "number": 12,
+        "title": "DAPT and TAPT",
+        "scene": null,
+        "section": "Adaptation",
+        "source": "<a href=\"https://aclanthology.org/2020.acl-main.740/\" target=\"_blank\" rel=\"noopener\">Gururangan et al. · Don’t Stop Pretraining (2020)</a> · Lecture 2, slides 25–31"
+      },
+      {
+        "number": 13,
+        "title": "Language-adaptive pretraining",
+        "scene": null,
+        "section": "Adaptation",
+        "source": "<a href=\"https://aclanthology.org/2022.coling-1.382/\" target=\"_blank\" rel=\"noopener\">Alabi et al. · AfroXLMR / MAFT (2022)</a> · Lecture 2, slides 26–29, 32"
+      },
+      {
+        "number": 14,
+        "title": "Adaptation stages can form a sequence",
+        "scene": "adaptation-stack",
+        "section": "Adaptation",
+        "source": "<a href=\"https://aclanthology.org/2020.acl-main.740/\" target=\"_blank\" rel=\"noopener\">Gururangan et al. · Don’t Stop Pretraining (2020)</a> · Lecture 2, slides 27–33"
+      },
+      {
+        "number": 15,
+        "title": "The Don’t Stop Pretraining experiment",
+        "scene": null,
+        "section": "Evidence",
+        "source": "<a href=\"https://aclanthology.org/2020.acl-main.740/\" target=\"_blank\" rel=\"noopener\">Gururangan et al. · Don’t Stop Pretraining (2020)</a> · Lecture 2, slides 30–34 · Table 5"
+      },
+      {
+        "number": 16,
+        "title": "Published results: the task changes the outcome",
+        "scene": "dapt-results",
+        "section": "Evidence",
+        "source": "<a href=\"https://aclanthology.org/2020.acl-main.740/\" target=\"_blank\" rel=\"noopener\">Gururangan et al. · Don’t Stop Pretraining (2020)</a> · Lecture 2, slides 30–34 · Table 5, test means ± SD"
+      },
+      {
+        "number": 17,
+        "title": "Relevance and compute both matter",
+        "scene": null,
+        "section": "Evidence",
+        "source": "<a href=\"https://aclanthology.org/2020.acl-main.740/\" target=\"_blank\" rel=\"noopener\">Gururangan et al. · Don’t Stop Pretraining (2020)</a> · Lecture 2, slides 30–31 · Tables 3 and 9"
+      },
+      {
+        "number": 18,
+        "title": "A held-out test stays outside adaptation",
+        "scene": "adaptation-split",
+        "section": "Evaluation",
+        "source": "<a href=\"https://aclanthology.org/2020.acl-main.740/\" target=\"_blank\" rel=\"noopener\">Gururangan et al. · Don’t Stop Pretraining (2020)</a> · Lecture 2, slides 25–34 · Inductive evaluation protocol"
+      },
+      {
+        "number": 19,
+        "title": "What an adaptation comparison should record",
+        "scene": null,
+        "section": "Evaluation",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 25–34"
+      },
+      {
+        "number": 20,
+        "title": "A task-adaptation question",
+        "scene": null,
+        "section": "Review",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 4–41"
+      },
+      {
+        "number": 21,
+        "title": "Two independent adaptation choices",
+        "scene": null,
+        "section": "Review",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 26–33, 41"
+      },
+      {
+        "number": 22,
+        "title": "The objective and the corpus define the stage",
+        "scene": null,
+        "section": "Review",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 4–41"
+      }
+    ]
+  },
+  {
+    "part": 7,
+    "lecture": 2,
+    "title": "African language models and evidence",
+    "slides": [
+      {
+        "number": 1,
+        "title": "African language models",
+        "scene": null,
+        "section": "Start",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 1–41"
+      },
+      {
+        "number": 2,
+        "title": "Two ways to initialise the model",
+        "scene": null,
+        "section": "Routes",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 35–40"
+      },
+      {
+        "number": 3,
+        "title": "Encoders in the lecture",
+        "scene": null,
+        "section": "Routes",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 35–37"
+      },
+      {
+        "number": 4,
+        "title": "One shared model or one per language",
+        "scene": "maft-architecture",
+        "section": "MAFT",
+        "source": "<a href=\"https://aclanthology.org/2022.coling-1.382/\" target=\"_blank\" rel=\"noopener\">Alabi et al. · AfroXLMR / MAFT (2022)</a> · Lecture 2, slides 32, 35"
+      },
+      {
+        "number": 5,
+        "title": "AfroXLMR: NER quality and stored backbones",
+        "scene": "maft-results",
+        "section": "MAFT",
+        "source": "<a href=\"https://aclanthology.org/2022.coling-1.382/\" target=\"_blank\" rel=\"noopener\">Alabi et al. · AfroXLMR / MAFT (2022)</a> · Lecture 2, slides 32, 35 · Table 3"
+      },
+      {
+        "number": 6,
+        "title": "What the MAFT comparison establishes",
+        "scene": null,
+        "section": "MAFT",
+        "source": "<a href=\"https://aclanthology.org/2022.coling-1.382/\" target=\"_blank\" rel=\"noopener\">Alabi et al. · AfroXLMR / MAFT (2022)</a> · Lecture 2, slides 35 · Table 3"
+      },
+      {
+        "number": 7,
+        "title": "AfroXLMR-Social: language plus domain",
+        "scene": "social-pipeline",
+        "section": "Domain",
+        "source": "<a href=\"https://aclanthology.org/2025.findings-emnlp.842/\" target=\"_blank\" rel=\"noopener\">Belay et al. · AfroXLMR-Social (2025)</a> · Lecture 2, slides 36"
+      },
+      {
+        "number": 8,
+        "title": "Published social-domain results",
+        "scene": "social-results",
+        "section": "Domain",
+        "source": "<a href=\"https://aclanthology.org/2025.findings-emnlp.842/\" target=\"_blank\" rel=\"noopener\">Belay et al. · AfroXLMR-Social (2025)</a> · Lecture 2, slides 36 · Table 3, reported averages"
+      },
+      {
+        "number": 9,
+        "title": "Causal decoders in the lecture",
+        "scene": null,
+        "section": "Routes",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 37–40"
+      },
+      {
+        "number": 10,
+        "title": "The 10-billion-token mixture",
+        "scene": "language-mixture",
+        "section": "Lugha-Llama",
+        "source": "<a href=\"https://arxiv.org/abs/2504.06536\" target=\"_blank\" rel=\"noopener\">Buzaaba et al. · Lugha-Llama (2025)</a> · Lecture 2, slides 38, 40 · Training-data mixtures"
+      },
+      {
+        "number": 11,
+        "title": "Published Lugha-Llama results",
+        "scene": "lugha-results",
+        "section": "Lugha-Llama",
+        "source": "<a href=\"https://arxiv.org/abs/2504.06536\" target=\"_blank\" rel=\"noopener\">Buzaaba et al. · Lugha-Llama (2025)</a> · Lecture 2, slides 38, 40 · Table 1, Avg†"
+      },
+      {
+        "number": 12,
+        "title": "Data quality and the task",
+        "scene": null,
+        "section": "Lugha-Llama",
+        "source": "<a href=\"https://arxiv.org/abs/2504.06536\" target=\"_blank\" rel=\"noopener\">Buzaaba et al. · Lugha-Llama (2025)</a> · Lecture 2, slides 38, 40 · Table 1"
+      },
+      {
+        "number": 13,
+        "title": "Inside a small African-language decoder",
+        "scene": "inkuba-architecture",
+        "section": "InkubaLM",
+        "source": "<a href=\"https://arxiv.org/abs/2408.17024\" target=\"_blank\" rel=\"noopener\">Tonja et al. · InkubaLM (2024)</a> · Lecture 2, slides 39 · Table 4"
+      },
+      {
+        "number": 14,
+        "title": "Small-model results need a task and protocol",
+        "scene": null,
+        "section": "InkubaLM",
+        "source": "<a href=\"https://arxiv.org/abs/2408.17024\" target=\"_blank\" rel=\"noopener\">Tonja et al. · InkubaLM (2024)</a> · Lecture 2, slides 39–40"
+      },
+      {
+        "number": 15,
+        "title": "AfriqueLLM and data composition",
+        "scene": null,
+        "section": "AfriqueLLM",
+        "source": "<a href=\"https://arxiv.org/abs/2601.06395\" target=\"_blank\" rel=\"noopener\">Yu et al. · AfriqueLLM (2026)</a> · Lecture 2, slides 37, 40"
+      },
+      {
+        "number": 16,
+        "title": "Reading the evidence across papers",
+        "scene": null,
+        "section": "Evaluation",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 34–40"
+      },
+      {
+        "number": 17,
+        "title": "A model-selection question",
+        "scene": null,
+        "section": "Review",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 4–41"
+      },
+      {
+        "number": 18,
+        "title": "An adaptation result needs a complete description",
+        "scene": null,
+        "section": "Review",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 4–41"
+      }
+    ]
+  },
+  {
+    "part": 8,
+    "lecture": 2,
+    "title": "Fine-tuning methods and efficient adaptation",
+    "slides": [
+      {
+        "number": 1,
+        "title": "Fine-tuning methods",
+        "scene": null,
+        "section": "Start",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 1–41"
+      },
+      {
+        "number": 2,
+        "title": "Data choices and parameter choices",
+        "scene": null,
+        "section": "Choices",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 26–33, 41"
+      },
+      {
+        "number": 3,
+        "title": "Frozen features and full fine-tuning",
+        "scene": "fine-tuning-updates",
+        "section": "Updates",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 41"
+      },
+      {
+        "number": 4,
+        "title": "The supervised task loss",
+        "scene": null,
+        "section": "Updates",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 18, 20, 41"
+      },
+      {
+        "number": 5,
+        "title": "Discriminative learning rates",
+        "scene": "layer-learning-rates",
+        "section": "Updates",
+        "source": "<a href=\"https://aclanthology.org/P18-1031/\" target=\"_blank\" rel=\"noopener\">Howard & Ruder · ULMFiT (2018)</a> · Lecture 2, slides 41"
+      },
+      {
+        "number": 6,
+        "title": "Gradual unfreezing",
+        "scene": "gradual-unfreeze",
+        "section": "Updates",
+        "source": "<a href=\"https://aclanthology.org/P18-1031/\" target=\"_blank\" rel=\"noopener\">Howard & Ruder · ULMFiT (2018)</a> · Lecture 2, slides 41 · Added schedule walkthrough"
+      },
+      {
+        "number": 7,
+        "title": "Sequential and multi-task adaptation",
+        "scene": null,
+        "section": "Schedules",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 41"
+      },
+      {
+        "number": 8,
+        "title": "A shared body with two task losses",
+        "scene": "multitask-loss",
+        "section": "Schedules",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 41 · Computed objective"
+      },
+      {
+        "number": 9,
+        "title": "A bottleneck adapter in the residual path",
+        "scene": "adapter-architecture",
+        "section": "Adapters",
+        "source": "<a href=\"https://proceedings.mlr.press/v97/houlsby19a.html\" target=\"_blank\" rel=\"noopener\">Houlsby et al. · adapters (2019)</a> · Lecture 2, slides 41 · Expanded architecture"
+      },
+      {
+        "number": 10,
+        "title": "Adapter dimensions",
+        "scene": null,
+        "section": "Adapters",
+        "source": "<a href=\"https://proceedings.mlr.press/v97/houlsby19a.html\" target=\"_blank\" rel=\"noopener\">Houlsby et al. · adapters (2019)</a> · Lecture 2, slides 41"
+      },
+      {
+        "number": 11,
+        "title": "LoRA: a parallel update to an existing matrix",
+        "scene": "lora-architecture",
+        "section": "LoRA",
+        "source": "<a href=\"https://arxiv.org/abs/2106.09685\" target=\"_blank\" rel=\"noopener\">Hu et al. · LoRA (2021)</a> · Lecture 2, slides 41 · Expanded architecture"
+      },
+      {
+        "number": 12,
+        "title": "LoRA shapes and trainable parameters",
+        "scene": null,
+        "section": "LoRA",
+        "source": "<a href=\"https://arxiv.org/abs/2106.09685\" target=\"_blank\" rel=\"noopener\">Hu et al. · LoRA (2021)</a> · Lecture 2, slides 41"
+      },
+      {
+        "number": 13,
+        "title": "A complete numeric LoRA pass",
+        "scene": "lora-numeric",
+        "section": "LoRA",
+        "source": "<a href=\"https://arxiv.org/abs/2106.09685\" target=\"_blank\" rel=\"noopener\">Hu et al. · LoRA (2021)</a> · Lecture 2, slides 41 · Chosen matrices, exact products"
+      },
+      {
+        "number": 14,
+        "title": "A 4096 × 4096 matrix: what changes with rank?",
+        "scene": "lora-parameters",
+        "section": "LoRA",
+        "source": "<a href=\"https://arxiv.org/abs/2106.09685\" target=\"_blank\" rel=\"noopener\">Hu et al. · LoRA (2021)</a> · Lecture 2, slides 41 · Computed parameter counts"
+      },
+      {
+        "number": 15,
+        "title": "Frozen weights still have a cost",
+        "scene": null,
+        "section": "LoRA",
+        "source": "<a href=\"https://arxiv.org/abs/2106.09685\" target=\"_blank\" rel=\"noopener\">Hu et al. · LoRA (2021)</a> · Lecture 2, slides 41"
+      },
+      {
+        "number": 16,
+        "title": "Bottleneck adapters and LoRA",
+        "scene": null,
+        "section": "Comparison",
+        "source": "<a href=\"https://proceedings.mlr.press/v97/houlsby19a.html\" target=\"_blank\" rel=\"noopener\">Houlsby et al. · adapters (2019)</a> · Lecture 2, slides 41 · Hu et al. (2021)"
+      },
+      {
+        "number": 17,
+        "title": "A parameter-efficiency question",
+        "scene": null,
+        "section": "Review",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 4–41"
+      },
+      {
+        "number": 18,
+        "title": "An adaptation plan has four decisions",
+        "scene": null,
+        "section": "Review",
+        "source": "Shamsuddeen Muhammad · Lecture 2, slides 4–41"
       }
     ]
   }

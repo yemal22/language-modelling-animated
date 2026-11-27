@@ -1,1 +1,9 @@
-{"name":"language-modelling-animated","private":true,"type":"module","scripts":{"test":"node tests.mjs"}}
+{
+  "name": "language-modelling-animated",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node tests.mjs && node continuation-tests.mjs"
+  }
+}

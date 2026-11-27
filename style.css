@@ -6,3 +6,5 @@
 .controls[hidden]{display:none}
 
 .atom.on.hot .node.dark{fill:var(--ink);stroke:var(--accent)}
+
+.node.train{fill:#f5eee9;stroke:#8b614a;stroke-width:2.5}.node.frozen{fill:#edf2f7;stroke:#94a3b8}
