@@ -28,7 +28,7 @@ function scoreRows(names,scores,sd=null){
 export const MORE_SCENES={
  'contextual-toy':state=>{
   const context=state.context||'river',causal=state.visibility==='causal',q=contextualToy(context,causal);
-  let s=box(20,80,300,100,'bank lookup\n[1.00, 1.00]',0,'data')+box(20,320,300,100,(context==='river'?'river before bank':'account after bank')+'\n['+q.cue.join(', ')+']',1,'data')+box(470,170,420,155,'Identity Q, K, V\nvisible weights: '+q.weights.map(x=>fmt(x,2)).join(', '),2)+path('M320,130 H390 V210 H470',2)+path('M320,370 H390 V285 H470',2)+box(1060,190,300,115,'bank state\n['+q.result.map(x=>fmt(x,2)).join(', ')+']',3,'dark')+line(890,245,1060,245,3)+A(0,text(690,35,context==='river'?'river  bank':'bank  account','bold'))+A(3,text(690,490,causal&&context==='account'?'Causal bank cannot read the future word “account”.':'Same input vector, context-dependent output. Chosen vectors, exact attention arithmetic.','small'));
+  let s=box(20,80,300,100,'bank lookup\n[1.00, 1.00]',0,'data')+box(20,320,300,100,(context==='river'?'river before bank':'account after bank')+'\n['+q.cue.join(', ')+']',1,'data')+box(470,170,420,155,'Identity Q, K, V\nvisible weights: '+q.weights.map(x=>fmt(x,2)).join(', '),2)+path('M320,130 H390 V210 H470',2)+(causal&&context==='account'?A(2,text(390,370,'×','bold')):path('M320,370 H390 V285 H470',2))+box(1060,190,300,115,'bank state\n['+q.result.map(x=>fmt(x,2)).join(', ')+']',3,'dark')+line(890,245,1060,245,3)+A(0,text(690,35,context==='river'?'river  bank':'bank  account','bold'))+A(3,text(690,490,causal&&context==='account'?'Causal bank cannot read the future word “account”.':'Same input vector, context-dependent output. Chosen vectors, exact attention arithmetic.','small'));
   return{svg:wrap(s),controls:[choice('context','Phrase',[['river','river bank'],['account','bank account']]),choice('visibility','Visibility',[['bidirectional','Bidirectional'],['causal','Causal']])],caps:['The embedding lookup gives bank the same starting vector in both phrases.','The neighbouring token supplies another vector. Its position determines whether a causal model can see it.','Attention mixes only permitted inputs. This toy uses chosen vectors and identity projections.','The resulting token state depends on available context. It is still a vector for this token occurrence.']};
  },
  'character-cnn':state=>{
@@ -48,7 +48,7 @@ export const MORE_SCENES={
     if(i<2)s+=line(x+250,y+28,x+310,y+28,at)+line(x+310,y+83,x+250,y+83,at);
    }
   });
-  s+=box(1040,175,320,150,'Task-specific\nweighted mixture',4)+path('M890,387 H970 V285 H1040',4)+line(890,275,1040,250,4)+path('M890,120 H970 V215 H1040',4)+A(4,text(1020,115,'h₀, h₁, h₂ for bank','small'))+A(3,text(690,35,'Forward and backward channels remain separate through the stack','small'));
+  s+=box(1040,175,320,150,'Task-specific\nweighted mixture',4)+path('M890,387 H970 V285 H1040',4)+line(890,275,1040,250,4)+path('M890,120 H970 V215 H1040',4)+A(4,text(1180,135,'h₀, h₁, h₂ for bank','small'))+A(3,text(690,35,'Forward and backward channels remain separate through the stack','small'));
   return{svg:wrap(s),caps:['A word starts as characters. The selected occurrence is bank.','The character CNN produces one context-independent input per word.','Layer 1 reads left-to-right and right-to-left with separate recurrent states.','Layer 2 stacks within each direction. Contextual representations concatenate the two directional states.','A downstream task learns how to mix the input representation and both contextual layers.']};
  },
  'elmo-mixture':state=>{
@@ -131,7 +131,7 @@ export const MORE_SCENES={
   return{svg:wrap(s),controls:[choice('mode','Storage strategy',[['maft','MAFT · one shared backbone'],['laft','LAFT · per-language backbones']])],caps:['Begin with one multilingual starting checkpoint and language-specific text corpora.','MAFT mixes languages within one continued-pretraining process. LAFT trains separate adaptations.','The chosen strategy determines whether one or several adapted backbones must be stored.','Then fine-tune on labelled tasks. Shared storage, language coverage and per-language scores all matter.']};
  },
  'maft-results':state=>{
-  let s=A(0,text(690,35,'NER test F1 · average over 13 languages · five runs','bold'))+axis(400,455,530);
+  let s=A(0,text(690,35,'NER test F1 · average over 13 languages · five runs','bold'))+axis(400,430,530);
   maftResults.forEach((r,i)=>{const y=90+i*85;s+=A(i+1,text(20,y+24,r.name,'small','start')+'<rect x="400" y="'+y+'" height="35" width="'+(530*r.score/100)+'" fill="#4f6d9a"/>'+text(950,y+24,fmt(r.score,1),'small bold','start')+text(1080,y+13,r.copies+' × '+r.params+'M','small','start')+text(1080,y+43,'stored backbone params','tiny','start'));});
   s+=A(4,text(690,510,'The LAFT comparison uses 13 separately adapted backbones. Counts exclude task heads.','small'));
   return{svg:wrap(s),caps:['This chart transcribes Table 3 of the AfroXLMR paper.','XLM-R-base: 79.2 average NER F1, one 270M backbone.','MAFT: 81.8 with one 270M backbone.','Pruned-vocabulary MAFT: 80.7 with one 140M backbone.','Per-language LAFT: 82.3, storing 13 backbones. The shared model trades a little mean quality for simpler storage.']};
@@ -144,9 +144,9 @@ export const MORE_SCENES={
   return{svg:wrap(s),caps:['AfroXLMR already adapted a multilingual encoder to African languages.','Continue masked-LM training on relevant social/news domain text.','A task-input pretraining stage can focus the distribution further.','Fine-tune the classifier using its labels.','Keep the base checkpoint and task evaluation fixed when measuring the additional benefit.']};
  },
  'social-results':state=>{
-  let s=A(0,text(690,30,'Reported average macro-F1 · AfroXLMR vs +DAPT','bold'))+axis(360,460,720);
+  let s=A(0,text(690,30,'Reported average macro-F1 · AfroXLMR vs +DAPT','bold'))+axis(360,420,720);
   socialResults.forEach((r,i)=>{const y=75+i*125;s+=A(i+1,text(20,y+36,r.task,'bold','start')+'<rect x="360" y="'+y+'" height="29" width="'+(720*r.base/100)+'" fill="#94a3b8"/>'+'<rect x="360" y="'+(y+38)+'" height="29" width="'+(720*r.adapted/100)+'" fill="#4f6d9a"/>'+text(1110,y+23,fmt(r.base,2),'small','start')+text(1110,y+61,fmt(r.adapted,2),'small bold','start')+text(1300,y+36,'+'+fmt(r.adapted-r.base,2),'small bold'));});
-  s+=A(4,text(690,515,'Different datasets cover different language sets. These are F1-point differences.','small'));
+  s+=A(4,text(690,500,'Different datasets cover different language sets. These are F1-point differences.','small'));
   return{svg:wrap(s),caps:['Grey is baseline AfroXLMR. Blue adds domain-adaptive pretraining.','AfriSenti: 51.39 to 58.21 average macro-F1.','AfriEmo: 44.25 to 51.45.','AfriHate: 65.17 to 69.83.','The final paper reports gains in these averages. Individual language results can improve by different amounts or decline.']};
  },
  'language-mixture':state=>{
@@ -189,7 +189,7 @@ export const MORE_SCENES={
  },
  'adapter-architecture':state=>{
   const q=adapterToy();
-  let s=box(20,200,230,95,'x = [1, 0.5]',0,'data')+box(400,55,270,100,'Down: d → r\nWdown x = '+fmt(q.u,2),1,'train')+path('M250,247 H300 V105 H400',1)+box(800,55,230,100,'ReLU\n'+fmt(q.activation,2),2)+line(670,105,800,105,2)+box(800,345,230,100,'Up: r → d\nΔ = [0.20, −0.10]',3,'train')+line(915,155,915,345,3)+op(1200,247,'+',4)+line(250,247,1175,247,4,'thick')+path('M1030,395 H1200 V272',4)+box(1080,20,280,95,'y = [1.20, 0.40]',4,'dark')+line(1200,222,1200,115,4)+A(4,text(620,295,'Unchanged residual input','small'))+A(4,text(400,480,'Chosen 2 → 1 → 2 adapter · exact arithmetic','small'));
+  let s=box(20,200,230,95,'x = [1, 0.5]',0,'data')+box(350,350,220,100,'Down: d → r\\nWdown x = '+fmt(q.u,2),1,'train')+path('M250,247 H285 V400 H350',1)+box(650,350,220,100,'ReLU\\n'+fmt(q.activation,2),2)+line(570,400,650,400,2)+box(950,350,220,100,'Up: r → d\\nΔ = [0.20, −0.10]',3,'train')+line(870,400,950,400,3)+op(1240,247,'+',4)+line(250,247,1215,247,4,'thick')+path('M1170,400 H1240 V272',4)+box(1110,50,260,95,'y = [1.20, 0.40]',4,'dark')+line(1240,222,1240,145,4)+A(4,text(740,210,'Unchanged residual input','small'))+A(4,text(690,510,'Chosen 2 → 1 → 2 adapter · exact arithmetic','small'));
   return{svg:wrap(s),caps:['The frozen body supplies a hidden vector x.','A trainable down projection maps width d into a small bottleneck r.','Apply a nonlinearity inside the added module.','A trainable up projection returns to width d.','Add the module’s output to x. This nonlinear adapter differs from LoRA’s linear weight-update branch.']};
  },
  'lora-architecture':state=>{
